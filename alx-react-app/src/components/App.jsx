@@ -1,11 +1,11 @@
-
 import React from 'react';
-import UserProfile from './components/UserProfile';
-function App() {
+
+function Header() {
   return (
-    <div>
-      <UserProfile name="Alice" age="25" bio="Loves hiking and photography" />
-    </div>
+    <header style={{ backgroundColor: 'navy', color: 'white', textAlign: 'center', padding: '10px' }}>
+      <h1>My Favorite Cities</h1>
+    </header>
   );
 }
-export default App;
+
+export default Header;
