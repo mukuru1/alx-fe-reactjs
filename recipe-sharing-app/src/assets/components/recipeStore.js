@@ -1,5 +1,4 @@
 import create from 'zustand';
-
 const useRecipeStore = create((set) => ({
   recipes: [],
   addRecipe: (newRecipe) =>
@@ -16,5 +15,4 @@ const useRecipeStore = create((set) => ({
     })),
   setRecipes: (recipes) => set({ recipes }),
 }));
-
 export default useRecipeStore;
