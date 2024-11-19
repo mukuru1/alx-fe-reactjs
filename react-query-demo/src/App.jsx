@@ -1,35 +1,37 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
-function App() {
-  const [count, setCount] = useState(0)
-
+import React from 'react';
+import { QueryClient, QueryClientProvider, useQuery } from 'react-query';
+import axios from 'axios';
+const queryClient = new QueryClient();
+const fetchPosts = async () => {
+  const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+  return response.data;
+};
+const PostsComponent = () => {
+  const { data, error, isLoading, refetch } = useQuery('posts', fetchPosts);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error loading posts.</div>;
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div>
+      <button onClick={refetch}>Refetch Posts</button>
+      <ul>
+        {data.map((post) => (
+          <li key={post.id}>
+            <h2>{post.title}</h2>
+            <p>{post.body}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+function App() {
+  return (
+    <QueryClientProvider client={queryClient}>
+      <div className="App">
+        <h1>Posts</h1>
+        <PostsComponent />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </QueryClientProvider>
+  );
 }
-
-export default App
+export default App;
