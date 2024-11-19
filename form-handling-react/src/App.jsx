@@ -3,6 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import RegistrationForm from './components/RegistrationForm';
+import FormikForm from './components/FormikForm';
 function App() {
   const [count, setCount] = useState(0)
   return (
@@ -10,6 +11,10 @@ function App() {
     <div className="App">
       <h1>User Registration</h1>
       <RegistrationForm />
+    </div>
+    <div className="App">
+      <h1>User Registration</h1>
+      <FormikForm />
     </div>
       <div>
         <a href="https://vite.dev" target="_blank">
