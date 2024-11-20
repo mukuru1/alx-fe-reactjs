@@ -1,9 +1,14 @@
 import React from 'react';
 import { Outlet, Link } from 'react-router-dom';
+
+/**
+ * Profile component that serves as a layout for nested routes.
+ * It includes navigation links to sub-sections and renders child routes using <Outlet />.
+ */
 const Profile = () => {
   return (
     <div>
-      <h2>Profile</h2>
+      <h2>Profile Page</h2>
       <nav>
         <ul>
           <li>
@@ -14,9 +19,10 @@ const Profile = () => {
           </li>
         </ul>
       </nav>
+
+      {/* Placeholder for nested routes */}
       <Outlet />
     </div>
   );
 };
 export default Profile;
-
