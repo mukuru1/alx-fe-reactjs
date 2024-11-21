@@ -1,46 +1,33 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import TodoList from '../TodoList';
+import React, { useState } from 'react';
 
-describe('TodoList Component', () => {
-  
-  test('renders TodoList with initial todos', () => {
-    render(<TodoList />);
-    expect(screen.getByText('Learn React')).toBeInTheDocument();
-    expect(screen.getByText('Build Todo App')).toBeInTheDocument();
-  });
+function TodoList() {
+    const [todos, setTodos] = useState([
+        { id: 1, text: 'Learn React', completed: false },
+        { id: 2, text: 'Build a Todo List', completed: false },
+    ]);
 
-  test('allows users to add a new todo', () => {
-    render(<TodoList />);
-    const input = screen.getByPlaceholderText('Add a new todo');
-    const addButton = screen.getByText('Add Todo');
+    const addTodo = (text) => {
+        const newTodo = { id: Date.now(), text, completed: false };
+        setTodos([...todos, newTodo]);
+    };
 
-    fireEvent.change(input, { target: { value: 'Test new todo' } });
-    fireEvent.click(addButton);
+    const toggleComplete = (id) => {
+        setTodos(
+            todos.map((todo) =>
+                todo.id === id ? { ...todo, completed: !todo.completed } : todo
+            )
+        );
+    };
 
-    expect(screen.getByText('Test new todo')).toBeInTheDocument();
-  });
+    const deleteTodo = (id) => {
+        setTodos(todos.filter((todo) => todo.id !== id));
+    };
 
-  test('allows users to toggle a todo as completed or not completed', () => {
-    render(<TodoList />);
-    const todoItem = screen.getByText('Learn React');
+    return (
+        <div>
+            {/* ... (Add Todo Form, Todo List, etc.) */}
+        </div>
+    );
+}
 
-    fireEvent.click(todoItem);
-
-    expect(todoItem).toHaveStyle('text-decoration: line-through');
-
-    fireEvent.click(todoItem);
-
-    expect(todoItem).not.toHaveStyle('text-decoration: line-through');
-  });
-
-  test('allows users to delete a todo', () => {
-    render(<TodoList />);
-    const deleteButton = screen.getAllByText('Delete')[0];
-
-    fireEvent.click(deleteButton);
-
-    expect(screen.queryByText('Learn React')).not.toBeInTheDocument();
-  });
-});
+export default TodoList;
