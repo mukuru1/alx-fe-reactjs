@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 const RegistrationForm = () => {
   const [formData, setFormData] = useState({
     username: '',
@@ -24,7 +25,7 @@ const RegistrationForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      // Simulate API call
+
       console.log("Form submitted", formData);
     }
   };
@@ -64,4 +65,5 @@ const RegistrationForm = () => {
     </form>
   );
 };
+
 export default RegistrationForm;
