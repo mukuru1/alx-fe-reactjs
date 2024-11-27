@@ -1,25 +1,26 @@
 import React, { useState } from 'react';
 
 const RegistrationForm = () => {
-
+  
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
+   
     if (!username || !email || !password) {
-      alert('All fields are required!');
+      setError('All fields are required.');
       return;
     }
 
-    console.log('Form submitted:', { username, email, password });
-    alert('Registration successful!');
+    setError('');
 
-    setUsername('');
-    setEmail('');
-    setPassword('');
+    
+    console.log({ username, email, password });
+    alert('Registration successful!');
   };
 
   return (
@@ -29,34 +30,32 @@ const RegistrationForm = () => {
         <input
           type="text"
           id="username"
-          name="username"
-          value={username}
+          value={username} 
           onChange={(e) => setUsername(e.target.value)}
+          placeholder="Enter your username"
         />
       </div>
-
       <div>
         <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
-          name="email"
           value={email}
-          onChange={(e) => setEmail(e.target.value)} 
+          onChange={(e) => setEmail(e.target.value)}
+          placeholder="Enter your email"
         />
       </div>
-
       <div>
         <label htmlFor="password">Password:</label>
         <input
           type="password"
           id="password"
-          name="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)} 
+          value={password} 
+          onChange={(e) => setPassword(e.target.value)}
+          placeholder="Enter your password"
         />
       </div>
-
+      {error && <p style={{ color: 'red' }}>{error}</p>}
       <button type="submit">Register</button>
     </form>
   );
