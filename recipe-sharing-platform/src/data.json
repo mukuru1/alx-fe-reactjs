@@ -5,13 +5,23 @@
       "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
       "image": "https://via.placeholder.com/150",
       "ingredients": ["Spaghetti", "Eggs", "Parmesan Cheese", "Bacon", "Black Pepper"],
+
     "steps": [
       "Cook spaghetti according to package instructions.",
       "Fry bacon until crispy.",
       "Mix eggs and cheese in a bowl.",
       "Combine spaghetti, bacon, and egg mixture while warm.",
       "Season with black pepper and serve."
-    ]
+    ],
+
+    "instructions": [
+        "Boil water in a large pot.",
+        "Add salt and cook spaghetti until al dente.",
+        "Cook bacon until crispy in a separate pan.",
+        "Mix eggs and Parmesan cheese in a bowl.",
+        "Combine spaghetti, bacon, and egg mixture while still warm."
+      ]
+
     },
     {
       "id": 2,
