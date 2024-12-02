@@ -43,6 +43,15 @@ const RecipeDetail = () => {
         <div className="mt-6">
           <h2 className="text-2xl font-semibold">Cooking Instructions</h2>
           <ol className="list-decimal list-inside mt-4 text-gray-700">
+            {recipe.instructions?.map((instruction, index) => (
+              <li key={index} className="mt-2">{instruction}</li>
+            ))}
+          </ol>
+        </div>
+
+        <div className="mt-6">
+          <h2 className="text-2xl font-semibold">Additional Steps</h2>
+          <ol className="list-decimal list-inside mt-4 text-gray-700">
             {recipe.steps?.map((step, index) => (
               <li key={index} className="mt-2">{step}</li>
             ))}
@@ -54,3 +63,4 @@ const RecipeDetail = () => {
 };
 
 export default RecipeDetail;
+
