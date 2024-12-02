@@ -11,7 +11,7 @@ const AddRecipeForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value }); 
   };
 
   const validateForm = () => {
@@ -34,7 +34,7 @@ const AddRecipeForm = () => {
     } else {
       console.log("Form submitted:", formData);
       alert("Recipe submitted successfully!");
-      setFormData({ title: "", ingredients: "", steps: "" });
+      setFormData({ title: "", ingredients: "", steps: "" }); 
       setErrors({});
     }
   };
@@ -46,6 +46,7 @@ const AddRecipeForm = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-lg p-6 space-y-4"
       >
+
         <div>
           <label
             htmlFor="title"
@@ -58,7 +59,7 @@ const AddRecipeForm = () => {
             id="title"
             name="title"
             value={formData.title}
-            onChange={handleChange}
+            onChange={handleChange} 
             className={`w-full px-4 py-2 border rounded-lg ${
               errors.title ? "border-red-500" : "border-gray-300"
             } focus:outline-none focus:ring-2 focus:ring-blue-500`}
@@ -80,7 +81,7 @@ const AddRecipeForm = () => {
             id="ingredients"
             name="ingredients"
             value={formData.ingredients}
-            onChange={handleChange}
+            onChange={handleChange} 
             rows="4"
             className={`w-full px-4 py-2 border rounded-lg ${
               errors.ingredients ? "border-red-500" : "border-gray-300"
@@ -103,7 +104,7 @@ const AddRecipeForm = () => {
             id="steps"
             name="steps"
             value={formData.steps}
-            onChange={handleChange}
+            onChange={handleChange} 
             rows="6"
             className={`w-full px-4 py-2 border rounded-lg ${
               errors.steps ? "border-red-500" : "border-gray-300"
