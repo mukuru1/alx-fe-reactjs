@@ -13,6 +13,13 @@ const HomePage = () => {
   }, []);
 
   return (
+    <Link
+  to="/add-recipe"
+  className="text-blue-500 hover:underline mt-4 block text-center"
+>
+  Add a New Recipe
+</Link>,
+
     <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
   <div className="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow p-4">
     <img
@@ -24,6 +31,7 @@ const HomePage = () => {
     <p className="text-gray-600 mt-2">{recipe.summary}</p>
   </div>
 </Link>,
+
     <div className="container mx-auto p-6">
       <h1 className="text-3xl font-bold text-center mb-8">Recipes</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
