@@ -9,11 +9,16 @@ const AddRecipeForm = () => {
 
   const [errors, setErrors] = useState({});
 
+ 
   const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value }); 
+    const { name, value } = e.target; 
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
   };
 
+  
   const validateForm = () => {
     const newErrors = {};
     if (!formData.title.trim()) newErrors.title = "Title is required.";
@@ -26,6 +31,7 @@ const AddRecipeForm = () => {
     return newErrors;
   };
 
+ 
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validateForm();
@@ -46,7 +52,7 @@ const AddRecipeForm = () => {
         onSubmit={handleSubmit}
         className="bg-white shadow-lg rounded-lg p-6 space-y-4"
       >
-
+       
         <div>
           <label
             htmlFor="title"
@@ -59,7 +65,7 @@ const AddRecipeForm = () => {
             id="title"
             name="title"
             value={formData.title}
-            onChange={handleChange} 
+            onChange={(e) => handleChange(e)} 
             className={`w-full px-4 py-2 border rounded-lg ${
               errors.title ? "border-red-500" : "border-gray-300"
             } focus:outline-none focus:ring-2 focus:ring-blue-500`}
@@ -70,6 +76,7 @@ const AddRecipeForm = () => {
           )}
         </div>
 
+      
         <div>
           <label
             htmlFor="ingredients"
@@ -81,7 +88,7 @@ const AddRecipeForm = () => {
             id="ingredients"
             name="ingredients"
             value={formData.ingredients}
-            onChange={handleChange} 
+            onChange={(e) => handleChange(e)} 
             rows="4"
             className={`w-full px-4 py-2 border rounded-lg ${
               errors.ingredients ? "border-red-500" : "border-gray-300"
@@ -93,6 +100,7 @@ const AddRecipeForm = () => {
           )}
         </div>
 
+       
         <div>
           <label
             htmlFor="steps"
@@ -104,7 +112,7 @@ const AddRecipeForm = () => {
             id="steps"
             name="steps"
             value={formData.steps}
-            onChange={handleChange} 
+            onChange={(e) => handleChange(e)} 
             rows="6"
             className={`w-full px-4 py-2 border rounded-lg ${
               errors.steps ? "border-red-500" : "border-gray-300"
@@ -116,6 +124,7 @@ const AddRecipeForm = () => {
           )}
         </div>
 
+       
         <button
           type="submit"
           className="w-full bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-200"
