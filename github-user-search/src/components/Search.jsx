@@ -116,4 +116,4 @@ const Search = () => {
     );
 };
 
-export default Search;
+export { fetchUserData, fetchAdvancedSearchData };
