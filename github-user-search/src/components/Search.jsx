@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import fetchUserData from '../services/githubService';
-
-import React, { useState } from 'react';
-import fetchAdvancedSearchData from '../services/githubService';
+import { fetchAdvancedSearchData } from '../services/githubService';
 
 const Search = () => {
     const [username, setUsername] = useState('');
@@ -20,6 +17,7 @@ const Search = () => {
         try {
             const query = { username, location, minRepos };
             const data = await fetchAdvancedSearchData(query);
+            if (data.items.length === 0) throw new Error(); // No results found
             setResults(data.items);
         } catch {
             setError(true);
@@ -82,7 +80,7 @@ const Search = () => {
                 </button>
             </form>
             {loading && <p>Loading...</p>}
-            {error && <p>Something went wrong. Please try again.</p>}
+            {error && <p>Looks like we cant find the user.</p>}
             {results.length > 0 && (
                 <div>
                     <h2 className="text-lg font-bold mb-4">Search Results</h2>
